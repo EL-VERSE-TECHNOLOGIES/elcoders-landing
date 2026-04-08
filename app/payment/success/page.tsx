@@ -1,10 +1,11 @@
 'use client';
 
+import { Suspense } from 'react';
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 
-export default function PaymentSuccess() {
+function PaymentSuccessContent() {
   const searchParams = useSearchParams();
   const reference = searchParams.get('reference');
   const [status, setStatus] = useState<string>('loading');
@@ -42,17 +43,6 @@ export default function PaymentSuccess() {
 
     verifyPayment();
   }, [reference]);
-
-  if (status === 'loading') {
-    return (
-      <div className="min-h-screen bg-gradient-to-b from-slate-950 to-slate-900 flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-cyan-400 mx-auto mb-4"></div>
-          <p className="text-white text-lg">Verifying your payment...</p>
-        </div>
-      </div>
-    );
-  }
 
   if (status === 'error') {
     return (
@@ -131,5 +121,24 @@ export default function PaymentSuccess() {
         </div>
       </div>
     </div>
+  );
+}
+
+function LoadingFallback() {
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-slate-950 to-slate-900 flex items-center justify-center">
+      <div className="text-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-cyan-400 mx-auto mb-4"></div>
+        <p className="text-white text-lg">Verifying your payment...</p>
+      </div>
+    </div>
+  );
+}
+
+export default function PaymentSuccess() {
+  return (
+    <Suspense fallback={<LoadingFallback />}>
+      <PaymentSuccessContent />
+    </Suspense>
   );
 }
