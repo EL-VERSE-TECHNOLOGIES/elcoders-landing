@@ -39,7 +39,19 @@ export async function POST(request: NextRequest) {
       }
     );
 
-    const data = await response.json();
+    const contentType = response.headers.get('content-type');
+    let data;
+
+    if (contentType && contentType.includes('application/json')) {
+      data = await response.json();
+    } else {
+      const text = await response.text();
+      console.error('Non-JSON response from Korapay:', text);
+      return NextResponse.json(
+        { error: 'Invalid response from payment processor' },
+        { status: 502 }
+      );
+    }
 
     if (!response.ok) {
       return NextResponse.json(

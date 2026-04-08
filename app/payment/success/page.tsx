@@ -26,6 +26,11 @@ export default function PaymentSuccess() {
         if (data.success) {
           setStatus('success');
           setTransactionData(data.data);
+          
+          // Auto-redirect to WhatsApp after 3 seconds
+          setTimeout(() => {
+            window.location.href = 'https://wa.link/aps8r5';
+          }, 3000);
         } else {
           setStatus('error');
         }
@@ -74,8 +79,11 @@ export default function PaymentSuccess() {
       <div className="max-w-md text-center">
         <div className="text-green-500 text-6xl mb-4">✓</div>
         <h1 className="text-4xl font-bold text-white mb-4">Payment Successful!</h1>
-        <p className="text-slate-400 mb-8">
-          Thank you! Our team will reach out within 2 hours to start your project. Connect with us on WhatsApp for faster communication.
+        <p className="text-slate-400 mb-2">
+          Thank you! Redirecting to WhatsApp in 3 seconds...
+        </p>
+        <p className="text-slate-500 text-sm mb-8">
+          Our team will reach out within 2 hours to start your project.
         </p>
 
         {transactionData && (

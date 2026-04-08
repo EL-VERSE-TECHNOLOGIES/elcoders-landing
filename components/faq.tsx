@@ -11,8 +11,8 @@ export function FAQ() {
       answer: 'Hours roll over! Scout plan rolls 7 days. Squad rolls 14 days. CTO rolls 30 days. Bank hours for bigger sprints.',
     },
     {
-      question: 'What tech stack do you work with?',
-      answer: 'React, Next.js, Node, Python, Laravel, AWS, Vercel, Shopify, Webflow. If it&apos;s modern web tech, we&apos;re fluent. Just ask.',
+      question: 'What tech stacks do you work with?',
+      answer: 'Frontend: React, Next.js, Vue, Angular, TypeScript, Tailwind CSS, Astro. Backend: Node.js, Python, Django, Flask, Laravel, Java, Go. Databases: PostgreSQL, MongoDB, MySQL, Firebase. Cloud: AWS, Azure, Google Cloud, Vercel, Netlify. Mobile: React Native, Flutter, Swift. Specializations: Web Apps, Mobile Apps, AI/ML, Cybersecurity, Full Stack Apps, Blockchain.',
     },
     {
       question: 'How does payment work?',
@@ -24,7 +24,7 @@ export function FAQ() {
     },
     {
       question: 'Is this an agency or a freelancer?',
-      answer: 'ELCODERS is the dedicated dev arm of EL VERSE TECHNOLOGIES. You get agency process (QA, Code Review, PM) with freelancer flexibility (pause daily).',
+      answer: 'ELCODERS is the dedicated development arm (sub startup) of EL VERSE TECHNOLOGIES. You get agency process (QA, Code Review, PM) with freelancer flexibility (pause daily). We handle Web Apps, Mobile Apps, AI/ML, Cybersecurity, Full Stack Development, Azure, and Blockchain solutions.',
     },
     {
       question: 'Can I switch plans later?',
@@ -33,6 +33,10 @@ export function FAQ() {
     {
       question: 'Do you offer discounts for non-profits or early-stage startups?',
       answer: 'Absolutely. We have a Founders Program. Book an Enterprise call and mention "EL VERSE Impact" for extended trial periods and reduced rates.',
+    },
+    {
+      question: 'What services does ELCODERS provide?',
+      answer: 'Web Apps, Mobile Apps, AI/ML Solutions, Cybersecurity Services, Full Stack Applications, Azure Cloud Infrastructure, Blockchain Development, UI/UX Design, API Development, Cloud Migration, and DevOps.',
     },
   ];
 

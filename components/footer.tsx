@@ -57,7 +57,16 @@ export function Footer() {
                   Email
                 </a>
               </li>
-              <li><a href="#" className="hover:text-cyan-400 transition">Twitter</a></li>
+              <li>
+                <a 
+                  href="https://x.com/ElVerse27"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-cyan-400 transition"
+                >
+                  Twitter
+                </a>
+              </li>
               <li><a href="#" className="hover:text-cyan-400 transition">LinkedIn</a></li>
             </ul>
           </div>
@@ -68,10 +77,10 @@ export function Footer() {
             &copy; {currentYear} EL VERSE TECHNOLOGIES. Daily Velocity, Zero Fluff.
           </p>
           <div className="flex gap-6 mt-4 md:mt-0">
-            <a href="#" className="text-slate-500 hover:text-slate-400 text-sm transition">
+            <a href="/privacy-policy" className="text-slate-500 hover:text-slate-400 text-sm transition">
               Privacy Policy
             </a>
-            <a href="#" className="text-slate-500 hover:text-slate-400 text-sm transition">
+            <a href="/terms-of-service" className="text-slate-500 hover:text-slate-400 text-sm transition">
               Terms of Service
             </a>
           </div>
