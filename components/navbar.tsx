@@ -37,9 +37,14 @@ export function Navbar() {
           </svg>
         </button>
 
-        <button className="hidden md:block px-6 py-2 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-lg font-semibold hover:opacity-90 transition">
+        <a
+          href="https://wa.link/oktez7"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hidden md:block px-6 py-2 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-lg font-semibold hover:opacity-90 transition"
+        >
           Get Started
-        </button>
+        </a>
       </div>
 
       {isOpen && (
@@ -57,9 +62,14 @@ export function Navbar() {
             <a href="#faq" className="text-slate-300 hover:text-white transition">
               FAQ
             </a>
-            <button className="w-full px-6 py-2 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-lg font-semibold hover:opacity-90 transition">
+            <a
+              href="https://wa.link/oktez7"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full px-6 py-2 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-lg font-semibold hover:opacity-90 transition text-center block"
+            >
               Get Started
-            </button>
+            </a>
           </div>
         </div>
       )}

@@ -39,17 +39,33 @@ export function Footer() {
           <div>
             <h4 className="text-white font-semibold mb-4">Connect</h4>
             <ul className="space-y-2 text-sm text-slate-400">
+              <li>
+                <a 
+                  href="https://wa.link/aps8r5"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-cyan-400 transition"
+                >
+                  WhatsApp
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="mailto:elcoderssofwares12@gmail.com"
+                  className="hover:text-cyan-400 transition"
+                >
+                  Email
+                </a>
+              </li>
               <li><a href="#" className="hover:text-cyan-400 transition">Twitter</a></li>
               <li><a href="#" className="hover:text-cyan-400 transition">LinkedIn</a></li>
-              <li><a href="#" className="hover:text-cyan-400 transition">GitHub</a></li>
-              <li><a href="#" className="hover:text-cyan-400 transition">Email</a></li>
             </ul>
           </div>
         </div>
 
         <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-slate-500 text-sm">
-            &copy; {currentYear} ELCODERS. All rights reserved.
+            &copy; {currentYear} EL VERSE TECHNOLOGIES. Daily Velocity, Zero Fluff.
           </p>
           <div className="flex gap-6 mt-4 md:mt-0">
             <a href="#" className="text-slate-500 hover:text-slate-400 text-sm transition">

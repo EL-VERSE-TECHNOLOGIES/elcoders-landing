@@ -7,28 +7,32 @@ export function FAQ() {
 
   const faqs = [
     {
-      question: 'How long does a typical project take?',
-      answer: 'Our projects typically take 8-16 weeks from discovery to launch, depending on complexity. We provide detailed timelines during the planning phase tailored to your specific requirements.',
+      question: 'What if I don&apos;t have 1 hour of work every single day?',
+      answer: 'Hours roll over! Scout plan rolls 7 days. Squad rolls 14 days. CTO rolls 30 days. Bank hours for bigger sprints.',
     },
     {
-      question: 'What technologies do you use?',
-      answer: 'We use modern, scalable technologies including Next.js, React, Node.js, TypeScript, Tailwind CSS, and various cloud platforms. We choose the best tools for each project&apos;s specific needs.',
+      question: 'What tech stack do you work with?',
+      answer: 'React, Next.js, Node, Python, Laravel, AWS, Vercel, Shopify, Webflow. If it&apos;s modern web tech, we&apos;re fluent. Just ask.',
     },
     {
-      question: 'Do you provide ongoing support?',
-      answer: 'Yes! All projects include ongoing support and maintenance. We offer various support packages including bug fixes, feature updates, and performance optimization.',
+      question: 'How does payment work?',
+      answer: 'We invoice daily at midnight UTC. Card on file. Pause or cancel anytime from your dashboard. You&apos;re never locked in.',
     },
     {
-      question: 'Can you work with our existing codebase?',
-      answer: 'Absolutely. We have experience integrating with existing systems, migrating legacy code, and extending current applications. We&apos;ll assess your codebase and provide recommendations.',
+      question: 'What&apos;s the catch with the 40% discount?',
+      answer: 'No catch. We want you to experience daily velocity risk-free. Discount applies to first 7 days. Cancel before day 8, pay nothing more. Stay, and standard rates apply. You&apos;ll see the discount reflected at checkout.',
     },
     {
-      question: 'What if I need to make changes during development?',
-      answer: 'We follow an agile methodology with regular sprints and client communication. Changes can be accommodated, and we&apos;ll discuss scope adjustments and timeline impacts transparently.',
+      question: 'Is this an agency or a freelancer?',
+      answer: 'ELCODERS is the dedicated dev arm of EL VERSE TECHNOLOGIES. You get agency process (QA, Code Review, PM) with freelancer flexibility (pause daily).',
     },
     {
-      question: 'How do you ensure quality and security?',
-      answer: 'We implement rigorous testing, code reviews, security audits, and follow industry best practices. All deliverables undergo comprehensive QA testing before deployment.',
+      question: 'Can I switch plans later?',
+      answer: 'Yes. Upgrade or downgrade with 1 day notice. Unused rollover hours transfer with you.',
+    },
+    {
+      question: 'Do you offer discounts for non-profits or early-stage startups?',
+      answer: 'Absolutely. We have a Founders Program. Book an Enterprise call and mention "EL VERSE Impact" for extended trial periods and reduced rates.',
     },
   ];
 

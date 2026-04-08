@@ -75,7 +75,7 @@ export default function PaymentSuccess() {
         <div className="text-green-500 text-6xl mb-4">✓</div>
         <h1 className="text-4xl font-bold text-white mb-4">Payment Successful!</h1>
         <p className="text-slate-400 mb-8">
-          Thank you for your order. We&apos;ll contact you shortly to begin your project.
+          Thank you! Our team will reach out within 2 hours to start your project. Connect with us on WhatsApp for faster communication.
         </p>
 
         {transactionData && (
@@ -99,12 +99,28 @@ export default function PaymentSuccess() {
           </div>
         )}
 
-        <Link
-          href="/"
-          className="px-8 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-lg font-semibold hover:opacity-90 transition inline-block"
-        >
-          Return Home
-        </Link>
+        <div className="flex flex-col gap-3">
+          <a
+            href="https://wa.link/aps8r5"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-8 py-3 bg-green-500 hover:bg-green-600 text-white rounded-lg font-semibold transition inline-block"
+          >
+            WhatsApp: Get Started
+          </a>
+          <a
+            href="mailto:elcoderssofwares12@gmail.com"
+            className="px-8 py-3 bg-slate-700 hover:bg-slate-600 text-white rounded-lg font-semibold transition inline-block"
+          >
+            Email Us
+          </a>
+          <Link
+            href="/"
+            className="px-8 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-lg font-semibold hover:opacity-90 transition inline-block"
+          >
+            Return Home
+          </Link>
+        </div>
       </div>
     </div>
   );

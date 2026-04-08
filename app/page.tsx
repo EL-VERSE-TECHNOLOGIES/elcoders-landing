@@ -1,5 +1,6 @@
 import { Navbar } from '@/components/navbar';
 import { Hero } from '@/components/hero';
+import { Trust } from '@/components/trust';
 import { Features } from '@/components/features';
 import { Pricing } from '@/components/pricing';
 import { Timeline } from '@/components/timeline';
@@ -21,6 +22,7 @@ export default function Home() {
     <main className="bg-slate-950 text-white">
       <Navbar />
       <Hero />
+      <Trust />
       <Features />
       <Pricing />
       <Timeline />

@@ -3,141 +3,145 @@
 import { useState } from 'react';
 
 export function Pricing() {
-  const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
   const [email, setEmail] = useState('');
-  const [showPromoModal, setShowPromoModal] = useState(false);
   const [promoCode, setPromoCode] = useState('');
+  const [appliedDiscount, setAppliedDiscount] = useState(false);
 
   const plans = [
     {
-      id: 'starter',
-      name: 'Starter',
-      price: 50000,
-      description: 'Perfect for small projects',
+      id: 'scout',
+      name: 'SCOUT',
+      originalPrice: 69,
+      salePrice: 49,
+      badge: 'Quick Fixes & Bug Squashing',
+      monthlyEquivalent: 980,
       features: [
-        'Up to 5 pages',
-        'Basic SEO optimization',
-        'Mobile responsive',
-        ' 3 months support',
-        'Free hosting for 1 year',
+        { text: '1 Hour Dedicated Dev Time Daily', included: true },
+        { text: 'Direct Slack Channel Access', included: true },
+        { text: 'Bug Fixes & Hotfixes (Same Day)', included: true },
+        { text: 'Unlimited Repos', included: true },
+        { text: 'Rollover Hours (Up to 7 Days)', included: true },
+        { text: 'New Feature Development', included: false },
+        { text: 'Architecture Planning', included: false },
       ],
+      highlighted: false,
     },
     {
-      id: 'professional',
-      name: 'Professional',
-      price: 150000,
-      description: 'Ideal for growing businesses',
+      id: 'squad',
+      name: 'SQUAD',
+      originalPrice: 129,
+      salePrice: 89,
+      badge: '⭐ MOST POPULAR',
+      monthlyEquivalent: 1780,
       features: [
-        'Up to 20 pages',
-        'Advanced SEO',
-        'E-commerce integration',
-        '12 months support',
-        'SSL & security setup',
-        'Performance optimization',
+        { text: '3 Hours Dedicated Dev Time Daily', included: true },
+        { text: 'New Feature Development', included: true },
+        { text: 'Pull Request Reviews', included: true },
+        { text: 'Slack + Linear/Jira Integration', included: true },
+        { text: 'Code Refactoring & Cleanup', included: true },
+        { text: 'Rollover Hours (Up to 14 Days)', included: true },
+        { text: '2 Team Members (Dev + QA)', included: true },
+        { text: 'CTO-Level Strategy', included: false },
       ],
       highlighted: true,
     },
     {
-      id: 'enterprise',
-      name: 'Enterprise',
-      price: 500000,
-      description: 'For large-scale projects',
+      id: 'cto',
+      name: 'CTO',
+      originalPrice: 199,
+      salePrice: 149,
+      badge: 'Fractional Leadership',
+      monthlyEquivalent: 2980,
       features: [
-        'Unlimited pages',
-        'Custom development',
-        'AI integration',
-        '24/7 priority support',
-        'Dedicated team',
-        'Advanced analytics',
-        'White-label options',
+        { text: '5 Hours Dedicated Dev Time Daily', included: true },
+        { text: 'Architecture & Tech Roadmap', included: true },
+        { text: 'Daily Strategy Huddle (30 mins)', included: true },
+        { text: 'Vendor & Tool Selection', included: true },
+        { text: 'Hiring Pipeline Consulting', included: true },
+        { text: 'Rollover Hours (Up to 30 Days)', included: true },
+        { text: 'Priority Slack & 24/7 Escalation', included: true },
+        { text: '2 Senior Devs + Tech Lead', included: true },
       ],
+      highlighted: false,
     },
   ];
 
-  const handlePlanSelect = (planId: string) => {
-    setSelectedPlan(planId);
+  const applyPromo = () => {
+    if (promoCode.toUpperCase() === 'ELVERSE40') {
+      setAppliedDiscount(true);
+    }
   };
 
-  const handlePayment = async () => {
-    if (!selectedPlan || !email) {
-      alert('Please select a plan and enter your email');
-      return;
-    }
-
-    const plan = plans.find(p => p.id === selectedPlan);
-    if (!plan) return;
-
-    try {
-      // Initialize payment with Korapay
-      const reference = `elcoders_${Date.now()}`;
-      const response = await fetch('/api/korapay/initialize', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email,
-          amount: plan.price / 100, // Convert kobo to naira
-          reference,
-          metadata: {
-            plan: plan.name,
-            plan_id: plan.id,
-          },
-        }),
-      });
-
-      const data = await response.json();
-      if (data.authorization_url) {
-        window.location.href = data.authorization_url;
-      } else {
-        alert('Failed to initialize payment');
-      }
-    } catch (error) {
-      console.error('Payment error:', error);
-      alert('Payment failed. Please try again.');
-    }
+  const handleBookConsultation = () => {
+    window.open('https://wa.link/aps8r5', '_blank');
   };
 
   return (
     <section id="pricing" className="py-20 bg-slate-950 relative">
       <div className="max-w-6xl mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 text-balance">
-            Simple, Transparent Pricing
+          <h2 className="text-sm font-bold text-cyan-400 uppercase tracking-widest mb-4">
+            Pricing
           </h2>
+          <h3 className="text-4xl md:text-5xl font-bold text-white mb-4 text-balance">
+            Pay Daily. Pause Anytime. Scale as You Grow.
+          </h3>
           <p className="text-lg text-slate-400">
-            Choose the perfect plan for your project needs
+            No long contracts. No surprise invoices. Just code shipped daily.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        {/* Discount Banner */}
+        <div className="bg-cyan-100 border-2 border-cyan-300 rounded-lg p-6 mb-12 max-w-4xl mx-auto">
+          <div className="text-center">
+            <p className="text-indigo-900 font-bold text-lg mb-2">
+              🎉 LAUNCH SPECIAL: First 7 Days at 40% Off on All Plans
+            </p>
+            <p className="text-indigo-800">
+              Use Code: <span className="font-bold">ELVERSE40</span> • Discount applied automatically at checkout • Cancel anytime
+            </p>
+          </div>
+        </div>
+
+        {/* Pricing Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
           {plans.map((plan) => (
             <div
               key={plan.id}
-              onClick={() => handlePlanSelect(plan.id)}
-              className={`rounded-2xl p-8 cursor-pointer transition transform hover:scale-105 ${
+              className={`rounded-2xl p-8 relative transition transform hover:scale-105 ${
                 plan.highlighted
-                  ? 'bg-gradient-to-br from-blue-600 to-cyan-600 border-2 border-blue-400 scale-105'
+                  ? 'bg-gradient-to-br from-cyan-500 to-blue-600 border-2 border-cyan-300 scale-105 shadow-2xl'
                   : 'bg-slate-800 border border-slate-700 hover:border-slate-600'
-              } ${selectedPlan === plan.id ? 'ring-2 ring-cyan-400' : ''}`}
+              }`}
             >
-              {plan.highlighted && (
-                <div className="text-xs font-bold text-white bg-cyan-600 inline-block px-3 py-1 rounded-full mb-4">
-                  MOST POPULAR
+              {plan.badge && (
+                <div className={`text-xs font-bold inline-block px-3 py-1 rounded-full mb-4 ${
+                  plan.highlighted
+                    ? 'bg-white text-cyan-600'
+                    : 'bg-cyan-600 text-white'
+                }`}>
+                  {plan.badge}
                 </div>
               )}
-              <h3 className={`text-2xl font-bold mb-2 ${plan.highlighted ? 'text-white' : 'text-white'}`}>
+
+              <h3 className={`text-3xl font-bold mb-2 ${plan.highlighted ? 'text-white' : 'text-white'}`}>
                 {plan.name}
               </h3>
-              <p className={`text-sm mb-6 ${plan.highlighted ? 'text-blue-100' : 'text-slate-400'}`}>
-                {plan.description}
-              </p>
+
               <div className="mb-6">
-                <span className={`text-4xl font-bold ${plan.highlighted ? 'text-white' : 'text-white'}`}>
-                  ₦{(plan.price / 1000).toFixed(0)}K
-                </span>
-                <p className={`text-sm ${plan.highlighted ? 'text-blue-100' : 'text-slate-400'}`}>
-                  per project
+                <div className="flex items-baseline gap-2">
+                  <span className={`text-5xl font-bold ${plan.highlighted ? 'text-white' : 'text-white'}`}>
+                    ${plan.salePrice}
+                  </span>
+                  <span className={`text-sm ${plan.highlighted ? 'text-blue-100' : 'text-slate-400'}`}>
+                    /day
+                  </span>
+                </div>
+                <p className={`text-sm line-through ${plan.highlighted ? 'text-blue-100' : 'text-slate-500'}`}>
+                  ${plan.originalPrice}/day
+                </p>
+                <p className={`text-xs mt-2 ${plan.highlighted ? 'text-blue-50' : 'text-slate-400'}`}>
+                  (Billed daily. Approx ${Math.round(plan.monthlyEquivalent)}/mo)
                 </p>
               </div>
 
@@ -145,71 +149,98 @@ export function Pricing() {
                 {plan.features.map((feature, idx) => (
                   <li
                     key={idx}
-                    className={`text-sm flex items-center ${
+                    className={`text-sm flex items-start ${
                       plan.highlighted ? 'text-white' : 'text-slate-300'
-                    }`}
+                    } ${!feature.included && 'opacity-50'}`}
                   >
-                    <span className="mr-3">✓</span>
-                    {feature}
+                    <span className="mr-3 flex-shrink-0">
+                      {feature.included ? '✅' : '❌'}
+                    </span>
+                    <span>{feature.text}</span>
                   </li>
                 ))}
               </ul>
 
-              <button
-                className={`w-full py-3 rounded-lg font-semibold transition ${
+              <a
+                href="https://wa.link/aps8r5"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`w-full py-3 rounded-lg font-semibold transition text-center block ${
                   plan.highlighted
-                    ? 'bg-white text-blue-600 hover:bg-slate-100'
-                    : 'bg-slate-700 text-white hover:bg-slate-600'
+                    ? 'bg-white text-cyan-600 hover:bg-slate-100'
+                    : 'bg-slate-700 text-white hover:bg-slate-600 border border-slate-600'
                 }`}
               >
-                {selectedPlan === plan.id ? 'Selected' : 'Choose Plan'}
-              </button>
+                Start 7-Day Trial →
+              </a>
+
+              <p className={`text-xs text-center mt-3 ${plan.highlighted ? 'text-blue-100' : 'text-slate-400'}`}>
+                Have a promo code?{' '}
+                <button
+                  onClick={applyPromo}
+                  className={`underline ${plan.highlighted ? 'hover:text-white' : 'hover:text-slate-300'}`}
+                >
+                  Apply here
+                </button>
+              </p>
             </div>
           ))}
         </div>
 
-        {selectedPlan && (
-          <div className="bg-slate-800 border border-slate-700 rounded-2xl p-8 max-w-2xl mx-auto">
-            <h3 className="text-2xl font-bold text-white mb-6">Complete Your Order</h3>
-            <div className="space-y-4 mb-6">
-              <div>
-                <label className="block text-slate-300 text-sm font-semibold mb-2">
-                  Email Address
-                </label>
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="your@email.com"
-                  className="w-full px-4 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500"
-                />
-              </div>
-
-              <div className="flex gap-2">
-                <input
-                  type="text"
-                  placeholder="Have a promo code?"
-                  value={promoCode}
-                  onChange={(e) => setPromoCode(e.target.value)}
-                  className="flex-1 px-4 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500"
-                />
-                <button
-                  onClick={() => setShowPromoModal(true)}
-                  className="px-4 py-2 bg-slate-600 hover:bg-slate-500 text-white rounded-lg transition"
-                >
-                  Apply
-                </button>
-              </div>
+        {/* Enterprise Section */}
+        <div className="bg-gradient-to-r from-indigo-900 to-indigo-950 rounded-2xl p-8 md:p-12 max-w-4xl mx-auto overflow-hidden">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+              <div className="text-white text-xs font-bold mb-4">🏢 FOR GROWING TEAMS & AGENCIES</div>
+              <h4 className="text-3xl font-bold text-white mb-4">Need a Custom Plan?</h4>
+              <p className="text-indigo-200 text-sm">
+                Multiple projects? Dedicated team required? Longer commitment? We build tailored solutions for companies scaling fast.
+              </p>
             </div>
 
-            <button
-              onClick={handlePayment}
-              className="w-full px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-lg font-semibold hover:opacity-90 transition"
-            >
-              Proceed to Payment
-            </button>
+            <div>
+              <ul className="space-y-3 mb-8 text-indigo-100">
+                <li className="flex items-center gap-2">
+                  <span>✅</span>
+                  <span className="text-sm">Dedicated Account Manager</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <span>✅</span>
+                  <span className="text-sm">Custom Hour Allocations (10+ hrs/day)</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <span>✅</span>
+                  <span className="text-sm">Volume Discounts (10-30% off daily rate)</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <span>✅</span>
+                  <span className="text-sm">Monthly Retainer Billing Option</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <span>✅</span>
+                  <span className="text-sm">NDA & Custom Security Agreements</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <span>✅</span>
+                  <span className="text-sm">White-Label Development</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <span>✅</span>
+                  <span className="text-sm">Priority Support & SLA Customization</span>
+                </li>
+              </ul>
+              <button
+                onClick={handleBookConsultation}
+                className="w-full px-6 py-3 bg-cyan-500 hover:bg-cyan-600 text-indigo-900 font-bold rounded-lg transition"
+              >
+                Book a Custom Consultation →
+              </button>
+              <p className="text-xs text-indigo-300 mt-3 text-center">
+                Typical response within 2 hours. No obligation call.
+              </p>
+            </div>
           </div>
-        )}
+        </div>
       </div>
     </section>
   );
