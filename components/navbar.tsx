@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,9 +10,18 @@ export function Navbar() {
   return (
     <nav className="fixed top-0 w-full bg-slate-950/95 backdrop-blur-sm z-50 border-b border-slate-800">
       <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-        <div className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-          ELCODERS
-        </div>
+        <Link href="/" className="flex items-center gap-2">
+          <Image 
+            src="/elcoders-logo.png" 
+            alt="ELCODERS Logo" 
+            width={40} 
+            height={40}
+            className="rounded"
+          />
+          <span className="text-xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+            ELCODERS
+          </span>
+        </Link>
         
         <div className="hidden md:flex gap-8">
           <a href="#services" className="text-slate-300 hover:text-white transition">

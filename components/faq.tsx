@@ -8,7 +8,7 @@ export function FAQ() {
   const faqs = [
     {
       question: 'What if I don&apos;t have 1 hour of work every single day?',
-      answer: 'Hours roll over! Scout plan rolls 7 days. Squad rolls 14 days. CTO rolls 30 days. Bank hours for bigger sprints.',
+      answer: 'Hours roll over! Scout plan rolls 7 days. Squad rolls 14 days. CTO rolls 30 days. Bank unused hours for bigger sprints whenever you need them.',
     },
     {
       question: 'What tech stacks do you work with?',
@@ -16,27 +16,35 @@ export function FAQ() {
     },
     {
       question: 'How does payment work?',
-      answer: 'We invoice daily at midnight UTC. Card on file. Pause or cancel anytime from your dashboard. You&apos;re never locked in.',
+      answer: 'We invoice daily at midnight UTC with a card on file. Pause or cancel anytime from your dashboard. No contracts or hidden fees. You&apos;re never locked in.',
     },
     {
       question: 'What&apos;s the catch with the 40% discount?',
-      answer: 'No catch. We want you to experience daily velocity risk-free. Discount applies to first 7 days. Cancel before day 8, pay nothing more. Stay, and standard rates apply. You&apos;ll see the discount reflected at checkout.',
+      answer: 'No catch. We want you to experience daily velocity risk-free. Discount applies to the first 7 days. Cancel before day 8 and pay nothing more. Stay after day 8 and standard rates apply. The discount is reflected at checkout.',
     },
     {
-      question: 'Is this an agency or a freelancer?',
-      answer: 'ELCODERS is the dedicated development arm (sub startup) of EL VERSE TECHNOLOGIES. You get agency process (QA, Code Review, PM) with freelancer flexibility (pause daily). We handle Web Apps, Mobile Apps, AI/ML, Cybersecurity, Full Stack Development, Azure, and Blockchain solutions.',
+      question: 'Is ELCODERS a freelancer or agency?',
+      answer: 'ELCODERS is a dedicated development arm (sub-startup) of EL VERSE TECHNOLOGIES. You get full agency processes (QA, Code Review, Project Management) with freelancer flexibility (pause daily, no lock-in). We deliver Web Apps, Mobile Apps, AI/ML, Cybersecurity, Full Stack Development, Azure, and Blockchain solutions.',
     },
     {
       question: 'Can I switch plans later?',
-      answer: 'Yes. Upgrade or downgrade with 1 day notice. Unused rollover hours transfer with you.',
+      answer: 'Yes, absolutely. Upgrade or downgrade with just 1 day notice. Unused rollover hours transfer with you when you change plans.',
     },
     {
-      question: 'Do you offer discounts for non-profits or early-stage startups?',
-      answer: 'Absolutely. We have a Founders Program. Book an Enterprise call and mention "EL VERSE Impact" for extended trial periods and reduced rates.',
+      question: 'Do you offer discounts for nonprofits or startups?',
+      answer: 'Yes! We have a Founders Program. Book an Enterprise call and mention "EL VERSE Impact" to get extended trial periods and special startup rates.',
     },
     {
-      question: 'What services does ELCODERS provide?',
-      answer: 'Web Apps, Mobile Apps, AI/ML Solutions, Cybersecurity Services, Full Stack Applications, Azure Cloud Infrastructure, Blockchain Development, UI/UX Design, API Development, Cloud Migration, and DevOps.',
+      question: 'What services does ELCODERS offer?',
+      answer: 'Web Apps, Mobile Apps, AI/ML Solutions, Cybersecurity Services, Full Stack Applications, Azure Cloud Infrastructure, Blockchain Development, UI/UX Design, API Development, Cloud Migration, and DevOps Support.',
+    },
+    {
+      question: 'How do I book a consultation?',
+      answer: 'Scroll to the "Book Your Consultation" section, fill out your details, select your preferred date and time, and we&apos;ll send you a confirmation email. You can also WhatsApp us at https://wa.link/oktez7.',
+    },
+    {
+      question: 'What payment methods do you accept?',
+      answer: 'We accept payments via Korapay, Stripe, Coinbase, Paystack, and Flutterwave. All payments are secure and encrypted. You can also book a call to discuss custom payment arrangements.',
     },
   ];
 
