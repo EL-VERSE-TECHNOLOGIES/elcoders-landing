@@ -73,7 +73,9 @@ export function Pricing() {
   };
 
   const handleBookConsultation = () => {
-    window.open('https://wa.link/aps8r5', '_blank');
+    // Scroll to booking section
+    const bookingSection = document.getElementById('booking');
+    bookingSection?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -110,8 +112,8 @@ export function Pricing() {
               key={plan.id}
               className={`rounded-2xl p-8 relative transition transform hover:scale-105 ${
                 plan.highlighted
-                  ? 'bg-gradient-to-br from-cyan-500 to-blue-600 border-2 border-cyan-300 scale-105 shadow-2xl'
-                  : 'bg-slate-800 border border-slate-700 hover:border-slate-600'
+                  ? 'bg-gradient-to-br from-cyan-500 via-blue-600 to-indigo-600 border-2 border-cyan-300 scale-105 shadow-2xl shadow-cyan-500/30'
+                  : 'bg-slate-800/50 backdrop-blur border border-slate-700 hover:border-cyan-500/30'
               }`}
             >
               {plan.badge && (

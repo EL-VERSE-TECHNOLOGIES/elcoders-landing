@@ -4,7 +4,9 @@ import { Trust } from '@/components/trust';
 import { Features } from '@/components/features';
 import { Pricing } from '@/components/pricing';
 import { Timeline } from '@/components/timeline';
+import { Booking } from '@/components/booking';
 import { FAQ } from '@/components/faq';
+import { CTA } from '@/components/cta';
 import { Footer } from '@/components/footer';
 
 export const metadata = {
@@ -26,7 +28,9 @@ export default function Home() {
       <Features />
       <Pricing />
       <Timeline />
+      <Booking />
       <FAQ />
+      <CTA />
       <Footer />
     </main>
   );

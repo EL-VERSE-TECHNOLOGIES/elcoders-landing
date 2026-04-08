@@ -60,10 +60,21 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Extract checkout URL from Korapay response
+    const checkoutUrl = data.data?.checkout_url || data.checkout_url || data.authorization_url;
+    
+    if (!checkoutUrl) {
+      console.warn('No checkout URL in Korapay response:', data);
+      return NextResponse.json(
+        { error: 'Failed to generate checkout URL' },
+        { status: 400 }
+      );
+    }
+
     return NextResponse.json({
       success: true,
       data,
-      authorization_url: data.data?.checkout_url,
+      authorization_url: checkoutUrl,
     });
   } catch (error) {
     console.error('Payment initialization error:', error);

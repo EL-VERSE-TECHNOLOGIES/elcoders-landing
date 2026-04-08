@@ -13,7 +13,7 @@ export default function PrivacyPolicy() {
           <section>
             <h2 className="text-3xl font-bold mb-4">1. Introduction</h2>
             <p className="text-slate-300 leading-relaxed">
-              ELCODERS ("we," "us," "our," or "Company"), a development arm of EL VERSE TECHNOLOGIES, is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website and use our services.
+              ELCODERS ("we," "us," "our," or "Universe"), a development arm of EL VERSE TECHNOLOGIES, is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website and use our services.
             </p>
           </section>
 
@@ -37,7 +37,7 @@ export default function PrivacyPolicy() {
               <div>
                 <h3 className="text-xl font-semibold mb-2">2.2 Payment Information</h3>
                 <p className="text-slate-300 leading-relaxed">
-                  Payment details are processed through Korapay, our payment processor. We do not store your full credit card information. We maintain only transaction records necessary for billing and service delivery.
+                  Payment details are securely processed through our payment partners: Korapay, Stripe, Coinbase, Paystack, and Flutterwave. We do not store your full credit card information. We maintain only transaction records necessary for billing and service delivery. Payment processors handle your sensitive financial data in compliance with PCI-DSS standards.
                 </p>
               </div>
 
@@ -72,7 +72,7 @@ export default function PrivacyPolicy() {
               We do not sell, trade, or rent your personal information to third parties. We may share information only with:
             </p>
             <ul className="list-disc list-inside text-slate-300 mt-4 space-y-2">
-              <li>Korapay for payment processing</li>
+              <li>Payment processors: Korapay, Stripe, Coinbase, Paystack, and Flutterwave for payment processing</li>
               <li>Service providers who assist in delivering our services</li>
               <li>Legal authorities when required by law</li>
               <li>Your consent or explicit instruction</li>
