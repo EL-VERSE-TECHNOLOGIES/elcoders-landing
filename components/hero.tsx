@@ -29,12 +29,16 @@ export function Hero() {
         </div>
 
         <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white text-balance">
-          Transform Your Vision Into
-          <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent"> Reality</span>
+          Code Shipped in 24 Hours
+          <span className="block bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent">Zero Fluff. Daily Velocity.</span>
         </h1>
 
-        <p className="text-lg md:text-xl text-slate-400 mb-8 max-w-2xl mx-auto text-balance">
-          At ELCODERS, we combine cutting-edge technology, strategic design, and AI innovation to deliver exceptional digital solutions that accelerate your business growth.
+        <p className="text-lg md:text-xl text-slate-300 mb-4 max-w-2xl mx-auto text-balance">
+          ELCODERS is the development arm of EL VERSE TECHNOLOGIES—your dedicated team for Web Apps, Mobile Apps, AI/ML, Cybersecurity, Full Stack, Azure & Blockchain.
+        </p>
+        
+        <p className="text-base md:text-lg text-slate-400 mb-8 max-w-2xl mx-auto text-balance">
+          Pause anytime. No contracts. No lock-in. Get a senior dev on your team for just $49-149/day.
         </p>
 
         <div className="flex flex-col md:flex-row gap-4 justify-center mb-12">
@@ -57,18 +61,34 @@ export function Hero() {
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-3 gap-8 pt-12 border-t border-slate-800">
-          <div>
-            <p className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">50+</p>
-            <p className="text-slate-400">Projects Delivered</p>
+        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 pt-12 border-t border-slate-700">
+          <div className="group">
+            <div className="flex items-center justify-center mb-2 text-cyan-400 text-2xl group-hover:scale-110 transition transform">
+              ⚡
+            </div>
+            <p className="text-2xl md:text-3xl font-bold text-white">24hrs</p>
+            <p className="text-slate-400 text-sm">First Commit</p>
           </div>
-          <div>
-            <p className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">30+</p>
-            <p className="text-slate-400">Satisfied Clients</p>
+          <div className="group">
+            <div className="flex items-center justify-center mb-2 text-blue-400 text-2xl group-hover:scale-110 transition transform">
+              🎯
+            </div>
+            <p className="text-2xl md:text-3xl font-bold text-white">500+</p>
+            <p className="text-slate-400 text-sm">Dev Hours</p>
           </div>
-          <div>
-            <p className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">5+</p>
-            <p className="text-slate-400">Years Experience</p>
+          <div className="group">
+            <div className="flex items-center justify-center mb-2 text-cyan-400 text-2xl group-hover:scale-110 transition transform">
+              😊
+            </div>
+            <p className="text-2xl md:text-3xl font-bold text-white">98%</p>
+            <p className="text-slate-400 text-sm">Satisfaction</p>
+          </div>
+          <div className="group">
+            <div className="flex items-center justify-center mb-2 text-blue-400 text-2xl group-hover:scale-110 transition transform">
+              🌍
+            </div>
+            <p className="text-2xl md:text-3xl font-bold text-white">40+</p>
+            <p className="text-slate-400 text-sm">Countries</p>
           </div>
         </div>
       </div>
