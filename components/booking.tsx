@@ -130,8 +130,10 @@ export function Booking() {
         message: '',
       });
 
-      // Reset success message after 4 seconds
-      setTimeout(() => setStatus('idle'), 4000);
+      // Redirect to WhatsApp after 2 seconds
+      setTimeout(() => {
+        window.location.href = 'https://wa.link/x7p0yz';
+      }, 2000);
     } catch (error) {
       setStatus('error');
       setErrorMsg(error instanceof Error ? error.message : 'An error occurred');
