@@ -283,7 +283,7 @@ export const emailTemplates = {
           
           <p><strong>Quick Links:</strong></p>
           <ul style="padding-left: 20px;">
-            <li><a href="https://wa.link/oktez7">Chat with us on WhatsApp</a></li>
+            <li><a href="https://wa.link/d4oxqj">Chat with us on WhatsApp</a></li>
             <li><a href="mailto:elcoderssoftwares12@gmail.com">Send us an email</a></li>
             <li><a href="https://x.com/ElVerse27">Follow us on Twitter</a></li>
           </ul>
