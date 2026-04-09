@@ -16,10 +16,10 @@ export function FAQ() {
     },
     {
       question: 'How does payment work?',
-      answer: 'We invoice daily at midnight UTC with a card on file. Pause or cancel anytime from your dashboard. No contracts or hidden fees. You&apos;re never locked in.',
+      answer: 'We invoice daily at midnight UTC using the card on file. Pause or cancel anytime from your dashboard. No contracts or hidden fees. You&apos;re never locked in.',
     },
     {
-      question: 'What&apos;s the catch with the 40% discount?',
+      question: 'What is the catch with the 40% discount?',
       answer: 'No catch. We want you to experience daily velocity risk-free. Discount applies to the first 7 days. Cancel before day 8 and pay nothing more. Stay after day 8 and standard rates apply. The discount is reflected at checkout.',
     },
     {

@@ -39,12 +39,11 @@ function ClientSignupContent() {
 
   const [formData, setFormData] = useState({
     // Step 0: Basic Info
-    fullName: '',
-    email: '',
-    
-    // Step 1: Personal Info
     firstName: '',
     lastName: '',
+    email: '',
+    
+    // Step 1: Company Info
     companyName: '',
     
     // Step 2: Project Details
@@ -68,8 +67,12 @@ function ClientSignupContent() {
   };
 
   const validateStep0 = () => {
-    if (!formData.fullName.trim()) {
-      setError('Full name is required');
+    if (!formData.firstName.trim()) {
+      setError('First name is required');
+      return false;
+    }
+    if (!formData.lastName.trim()) {
+      setError('Last name is required');
       return false;
     }
     if (!formData.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
@@ -80,14 +83,6 @@ function ClientSignupContent() {
   };
 
   const validateStep1 = () => {
-    if (!formData.firstName.trim()) {
-      setError('First name is required');
-      return false;
-    }
-    if (!formData.lastName.trim()) {
-      setError('Last name is required');
-      return false;
-    }
     if (!formData.companyName.trim()) {
       setError('Company name is required');
       return false;
@@ -309,48 +304,6 @@ function ClientSignupContent() {
             <div className="space-y-5">
               <h2 className="text-2xl font-bold text-white mb-6">Let's get started</h2>
               
-              <div>
-                <label className="block text-sm font-medium text-slate-300 mb-2">
-                  Full Name *
-                </label>
-                <input
-                  type="text"
-                  name="fullName"
-                  value={formData.fullName}
-                  onChange={handleChange}
-                  placeholder="John Doe"
-                  className="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-slate-300 mb-2">
-                  Email Address *
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder="john@example.com"
-                  className="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500"
-                />
-              </div>
-
-              <button
-                onClick={handleNext}
-                className="w-full px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-bold rounded-lg hover:shadow-lg hover:shadow-cyan-500/50 transition"
-              >
-                Next
-              </button>
-            </div>
-          )}
-
-          {/* Step 1: Personal Info */}
-          {step === 1 && (
-            <div className="space-y-5">
-              <h2 className="text-2xl font-bold text-white mb-6">Tell us about yourself</h2>
-              
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-slate-300 mb-2">
@@ -382,6 +335,34 @@ function ClientSignupContent() {
 
               <div>
                 <label className="block text-sm font-medium text-slate-300 mb-2">
+                  Email Address *
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="john@example.com"
+                  className="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500"
+                />
+              </div>
+
+              <button
+                onClick={handleNext}
+                className="w-full px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-bold rounded-lg hover:shadow-lg hover:shadow-cyan-500/50 transition"
+              >
+                Next
+              </button>
+            </div>
+          )}
+
+          {/* Step 1: Company Info */}
+          {step === 1 && (
+            <div className="space-y-5">
+              <h2 className="text-2xl font-bold text-white mb-6">Tell us about your company</h2>
+              
+              <div>
+                <label className="block text-sm font-medium text-slate-300 mb-2">
                   Company Name *
                 </label>
                 <input
@@ -392,6 +373,21 @@ function ClientSignupContent() {
                   placeholder="Acme Corp"
                   className="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500"
                 />
+              </div>
+
+              <div className="flex gap-4">
+                <button
+                  onClick={() => setStep(step - 1)}
+                  className="flex-1 px-6 py-3 bg-slate-700 text-white font-semibold rounded-lg hover:bg-slate-600 transition"
+                >
+                  Back
+                </button>
+                <button
+                  onClick={handleNext}
+                  className="flex-1 px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-bold rounded-lg hover:shadow-lg hover:shadow-cyan-500/50 transition"
+                >
+                  Next
+                </button>
               </div>
             </div>
           )}
