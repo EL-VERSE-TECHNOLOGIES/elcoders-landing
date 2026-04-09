@@ -18,8 +18,12 @@ export const metadata: Metadata = {
   description: 'Transform your vision into reality with cutting-edge web development, UI/UX design, and AI solutions.',
   generator: 'v0.app',
   icons: {
-    icon: '/favicon.ico',
-    apple: '/elcoders-logo.png',
+    icon: [
+      { url: '/favicon.ico' },
+      { url: '/elcoders-logo.png', type: 'image/png' },
+    ],
+    apple: '/apple-icon.png',
+    shortcut: '/elcoders-logo.png',
   },
 }
 
