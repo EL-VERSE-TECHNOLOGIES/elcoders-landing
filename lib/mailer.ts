@@ -121,3 +121,16 @@ export async function sendAdminNotificationEmail(params: BookingConfirmationPara
     html,
   });
 }
+
+/**
+ * Send OTP code for email verification
+ */
+export async function sendOTPEmail(email: string, name: string, otp: string) {
+  const html = emailTemplates.otpCode(name, otp);
+
+  return sendEmail({
+    to: email,
+    subject: 'Verify Your Email - ELCODERS Signup',
+    html,
+  });
+}

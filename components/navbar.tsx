@@ -48,12 +48,10 @@ export function Navbar() {
         </button>
 
         <a
-          href="https://wa.link/oktez7"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="/auth"
           className="hidden md:block px-6 py-2 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-lg font-semibold hover:opacity-90 transition"
         >
-          Get Started
+          Join Now
         </a>
       </div>
 
@@ -73,12 +71,10 @@ export function Navbar() {
               FAQ
             </a>
             <a
-              href="https://wa.link/oktez7"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/auth"
               className="w-full px-6 py-2 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-lg font-semibold hover:opacity-90 transition text-center block"
             >
-              Get Started
+              Join Now
             </a>
           </div>
         </div>

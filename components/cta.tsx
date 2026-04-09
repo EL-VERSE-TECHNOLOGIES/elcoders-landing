@@ -30,9 +30,7 @@ export function CTA() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
             <a
-              href="https://wa.link/aps8r5"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/auth"
               className="px-10 py-4 bg-gradient-to-r from-cyan-400 to-blue-400 text-white font-bold text-lg rounded-xl hover:shadow-2xl hover:shadow-cyan-400/50 transition transform hover:scale-105 shadow-xl"
             >
               Start 7-Day Trial ($49/day)

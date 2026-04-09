@@ -358,4 +358,58 @@ export const emailTemplates = {
     `;
     return emailBase(content);
   },
+
+  /**
+   * OTP verification email
+   */
+  otpCode: (userName: string, otp: string) => {
+    const content = `
+      <div class="header">
+        <h1>Verify Your Email 🔐</h1>
+        <p>Your one-time password</p>
+      </div>
+      
+      <div class="content">
+        <p>Hi ${userName},</p>
+        
+        <p>To complete your signup with ELCODERS, please verify your email address using the code below:</p>
+        
+        <div style="background: #f0f9ff; border: 2px solid #0ea5e9; border-radius: 8px; padding: 30px; text-align: center; margin: 25px 0;">
+          <p style="margin: 0 0 10px 0; font-size: 12px; color: #666; font-weight: 600; text-transform: uppercase;">Your Verification Code</p>
+          <div style="font-size: 36px; font-weight: 700; letter-spacing: 8px; color: #0ea5e9; font-family: 'Courier New', monospace; margin: 0;">
+            ${otp}
+          </div>
+          <p style="margin: 15px 0 0 0; font-size: 12px; color: #666;">Valid for 10 minutes</p>
+        </div>
+        
+        <div class="step">
+          <div class="step-title">⏱️ This code expires in 10 minutes</div>
+          <p>If you didn't request this code, you can safely ignore this email.</p>
+        </div>
+        
+        <div class="section">
+          <h2>What happens next?</h2>
+          <p>After verifying your email:</p>
+          <ul style="padding-left: 20px;">
+            <li>You'll be welcomed to ELCODERS</li>
+            <li>Receive your kickoff call link</li>
+            <li>Get the ELVERSE40 discount code (40% off)</li>
+            <li>Start shipping code within 24 hours</li>
+          </ul>
+        </div>
+        
+        <div class="section">
+          <p style="color: #666; font-size: 12px;">
+            <strong>Security Note:</strong> Never share your verification code with anyone. ELCODERS will never ask for your code via email, phone, or social media.
+          </p>
+        </div>
+      </div>
+      
+      <div class="footer">
+        <p><strong class="logo">ELCODERS</strong> - Daily Velocity, Zero Fluff</p>
+        <p>&copy; 2026 EL VERSE TECHNOLOGIES. All rights reserved.</p>
+      </div>
+    `;
+    return emailBase(content);
+  },
 };
