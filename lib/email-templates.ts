@@ -163,73 +163,68 @@ const emailBase = (content: string) => `
 export const emailTemplates = {
   /**
    * Welcome email sent immediately after signup
+   * EMAIL 1 (Immediate - 0 min after signup)
    */
   welcomeEmail: (userName: string, amount?: string) => {
     const content = `
       <div class="header">
-        <h1>Welcome to ELCODERS 🚀</h1>
-        <p>You're in. Let's get started.</p>
+        <div style="margin-bottom: 15px;">
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==" alt="ELCODERS" style="max-width: 200px; height: auto; display: inline-block;">
+        </div>
+        <h1 style="margin: 15px 0 5px 0;">Welcome to ELCODERS</h1>
+        <p style="margin: 0; font-size: 16px;">You're in. Let's ship code.</p>
       </div>
       
       <div class="content">
-        <p>Hi ${userName},</p>
+        <p>Hi <strong>${userName}</strong>,</p>
         
-        <p>You're in. Welcome to <strong>ELCODERS</strong>.</p>
+        <p style="font-size: 16px; font-weight: 500; color: #0ea5e9; margin: 20px 0;">You're in. Welcome to ELCODERS.</p>
         
-        <p>Here's what happens next:</p>
+        <p style="font-size: 15px; margin-bottom: 25px;">Here's what happens next:</p>
         
-        <div class="step">
-          <div class="step-title">📅 STEP 1: Your Kickoff Call</div>
-          <p>Let's sync up and get your project rolling.</p>
-          <p style="text-align: center;">
-            <a href="https://calendly.com/elcoderssoftwares12/30min" class="link-box">Schedule Your Call</a>
+        <div class="step" style="background: #f8fcff; border-left: 5px solid #0ea5e9;">
+          <div class="step-title" style="font-size: 16px;">📅 STEP 1: Your Kickoff Call</div>
+          <p style="margin: 8px 0 12px 0; font-size: 14px;">
+            <a href="https://calendly.com/elcoderssoftwares12/30min" style="color: #0ea5e9; font-weight: 600; text-decoration: none;">https://calendly.com/elcoderssoftwares12/30min</a>
           </p>
         </div>
         
-        <div class="step">
-          <div class="step-title">⏱️ STEP 2: Before the Call (5 min prep)</div>
-          <ul style="margin: 5px 0; padding-left: 20px;">
+        <div class="step" style="background: #f8fcff; border-left: 5px solid #0ea5e9; margin-top: 15px;">
+          <div class="step-title" style="font-size: 16px;">⏱️ STEP 2: Before the Call (5 min prep)</div>
+          <ul style="margin: 8px 0; padding-left: 20px; font-size: 14px;">
             <li>Have your GitHub/Lab repo URL ready</li>
             <li>Know the ONE bug or task you want fixed first</li>
             <li>That's it. No SOW. No paperwork.</li>
           </ul>
         </div>
         
-        <div class="step">
-          <div class="step-title">🎁 STEP 3: Your Discount</div>
-          <p>You've got an exclusive offer:</p>
-          <div class="discount-box">
-            <p style="margin: 0 0 5px 0; font-size: 14px;">Use code</p>
-            <div class="discount-code">ELVERSE40</div>
-            <p style="margin: 5px 0 0 0; font-size: 13px;">40% off for your first 7 days</p>
-            ${amount ? `<p style="margin: 10px 0 0 0; font-size: 13px;">Your card will be charged <strong>$${amount}/day</strong> starting tomorrow.</p>` : ''}
-          </div>
+        <div class="step" style="background: #f8fcff; border-left: 5px solid #0ea5e9; margin-top: 15px;">
+          <div class="step-title" style="font-size: 16px;">🎁 STEP 3: Your Discount</div>
+          <p style="margin: 8px 0; font-size: 14px;">Code <strong>ELVERSE40</strong> is active. First 7 days at 40% off.</p>
+          ${amount ? `<p style="margin: 8px 0; font-size: 14px; color: #1e293b;">Your card will be charged <strong>$${amount}/day</strong> starting tomorrow.</p>` : '<p style="margin: 8px 0; font-size: 14px; color: #1e293b;">Your card will be charged starting tomorrow.</p>'}
         </div>
         
-        <div class="section">
-          <h2>Need to Reschedule?</h2>
-          <p>No problem! You can reschedule your kickoff call anytime:</p>
-          <p style="text-align: center;">
-            <a href="https://calendly.com/elcoderssoftwares12/30min" class="link-box">Reschedule Call</a>
+        <div class="section" style="margin-top: 25px; padding-top: 25px; border-top: 2px solid #e5e7eb;">
+          <p style="font-size: 15px; margin: 0 0 12px 0;"><strong>📞 Need to reschedule?</strong></p>
+          <p style="margin: 8px 0; font-size: 14px;">
+            <a href="https://calendly.com/elcoderssoftwares12/30min" style="color: #0ea5e9; font-weight: 600; text-decoration: none;">https://calendly.com/elcoderssoftwares12/30min</a>
+          </p>
+          <p style="margin: 8px 0; font-size: 14px;">
+            <a href="https://elcoders-devs.vercel.app/" style="color: #0ea5e9; font-weight: 600; text-decoration: none;">https://elcoders-devs.vercel.app/</a>
           </p>
         </div>
         
-        <p style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e5e7eb;">
-          <strong>Questions or need help?</strong>
-          <br>
-          <a href="https://elcoders-devs.vercel.app/">Visit our website</a> or reach out to us.
-        </p>
-        
-        <p style="margin: 20px 0; color: #666;">
-          Talk soon,<br>
-          <strong>Cebastian Jerry</strong><br>
-          Sales, ELCODERS<br>
-          EL VERSE TECHNOLOGIES
+        <p style="margin-top: 30px; padding-top: 20px; border-top: 2px solid #e5e7eb; font-size: 14px; line-height: 1.8;">
+          Talk soon,<br><br>
+          <strong style="font-size: 15px;">Cebastian Jerry</strong><br>
+          <span style="color: #666;">Sales, ELCODERS</span><br>
+          <span style="color: #666;">EL VERSE TECHNOLOGIES</span>
         </p>
       </div>
       
       <div class="footer">
-        <p><strong class="logo">ELCODERS</strong> - Daily Velocity, Zero Fluff</p>
+        <p><strong class="logo" style="font-size: 18px;">ELCODERS</strong></p>
+        <p style="color: #999; font-size: 11px; margin-top: 10px;">Daily Velocity. Zero Fluff.</p>
         <div class="social-links">
           <a href="https://wa.link/oktez7">WhatsApp</a>
           <a href="https://x.com/ElVerse27">Twitter</a>

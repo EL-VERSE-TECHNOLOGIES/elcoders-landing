@@ -1,6 +1,6 @@
 # ELCODERS - Premium Digital Solutions Landing Page
 
-A modern, fully-functional landing page with integrated Korapay payment processing. Built with Next.js 16, React, Tailwind CSS, and featuring multiple sections including pricing with payment processing.
+A modern, fully-functional landing page with integrated Korapay payment processing, email capabilities, and OTP verification. Built with Next.js 16, React, Tailwind CSS, TypeScript, and featuring multiple sections including pricing with payment processing.
 
 ## Features
 
@@ -22,7 +22,9 @@ A modern, fully-functional landing page with integrated Korapay payment processi
   - Email collection for plans
   - Promo code support (placeholder)
 
-### Backend - Korapay Payment Integration
+### Backend Features
+
+**Korapay Payment Integration**
 - **Initialize Transaction** (`/api/korapay/initialize`)
   - Creates Korapay payment transaction
   - Accepts email, amount, reference, and metadata
@@ -38,12 +40,28 @@ A modern, fully-functional landing page with integrated Korapay payment processi
   - Validates webhook signatures using HMAC-SHA256
   - Handles events: `charge.success`, `charge.failed`, `charge.pending`
 
+**Authentication & Email**
+- **OTP System** (`/api/auth/*`)
+  - Generate OTP via `/request-otp` endpoint
+  - Verify OTP via `/verify-otp` endpoint
+  - Client and Developer signup flows
+  - Email delivery via Nodemailer
+
+- **Email Service**
+  - Nodemailer integration for reliable email delivery
+  - OTP verification emails
+  - Account confirmation emails
+  - Newsletter signup support
+
 ## Tech Stack
 
 - **Framework**: Next.js 16 (App Router)
 - **Styling**: Tailwind CSS 4
 - **Language**: TypeScript
 - **Payment**: Korapay API
+- **Email**: Nodemailer 6.9.8
+- **Authentication**: OTP verification system
+- **UI Components**: Radix UI + Shadcn/ui
 - **Deployment**: Vercel
 
 ## Environment Variables

@@ -34,7 +34,7 @@ export function Hero() {
         </h1>
 
         <p className="text-lg md:text-xl text-slate-300 mb-8 max-w-2xl mx-auto text-balance">
-          Your dedicated development team for Web Apps, Mobile Apps, AI/ML, Cybersecurity, Full Stack, Azure & Blockchain. Pause anytime. No lock-in. Senior developers from $49-149/day.
+          Premium dev team for Web Apps, Mobile Apps, AI/ML & more. Senior developers from $49/day. Pause anytime. No lock-in. We handle contracts.
         </p>
 
         <div className="flex flex-col md:flex-row gap-4 justify-center mb-12">
