@@ -108,7 +108,7 @@ export default function AuthChoice() {
         <div className="text-center mt-16">
           <p className="text-slate-400">
             Already have an account?{' '}
-            <a href="https://wa.link/oktez7" className="text-cyan-400 hover:text-cyan-300 font-semibold">
+            <a href="https://wa.link/d4oxqj" className="text-cyan-400 hover:text-cyan-300 font-semibold">
               Contact us
             </a>
           </p>

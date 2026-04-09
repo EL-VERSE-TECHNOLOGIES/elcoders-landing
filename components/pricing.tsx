@@ -164,7 +164,7 @@ export function Pricing() {
               </ul>
 
               <a
-                href="https://wa.link/aps8r5"
+                href="https://wa.link/d4oxqj"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`w-full py-3 rounded-lg font-semibold transition text-center block ${

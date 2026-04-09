@@ -30,7 +30,7 @@ function PaymentSuccessContent() {
           
           // Auto-redirect to WhatsApp after 3 seconds
           setTimeout(() => {
-            window.location.href = 'https://wa.link/aps8r5';
+            window.location.href = 'https://wa.link/ufekas';
           }, 3000);
         } else {
           setStatus('error');
@@ -99,7 +99,7 @@ function PaymentSuccessContent() {
 
         <div className="flex flex-col gap-3">
           <a
-            href="https://wa.link/aps8r5"
+            href="https://wa.link/ufekas"
             target="_blank"
             rel="noopener noreferrer"
             className="px-8 py-3 bg-green-500 hover:bg-green-600 text-white rounded-lg font-semibold transition inline-block"

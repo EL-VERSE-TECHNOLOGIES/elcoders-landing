@@ -132,7 +132,7 @@ export function Booking() {
 
       // Redirect to WhatsApp after 2 seconds
       setTimeout(() => {
-        window.location.href = 'https://wa.link/x7p0yz';
+        window.location.href = 'https://wa.link/d4oxqj';
       }, 2000);
     } catch (error) {
       setStatus('error');

@@ -40,7 +40,7 @@ export function FAQ() {
     },
     {
       question: 'How do I book a consultation?',
-      answer: 'Scroll to the "Book Your Consultation" section, fill out your details, select your preferred date and time, and we&apos;ll send you a confirmation email. You can also WhatsApp us at https://wa.link/oktez7.',
+      answer: 'Scroll to the "Book Your Consultation" section, fill out your details, select your preferred date and time, and we&apos;ll send you a confirmation email. You can also WhatsApp us at https://wa.link/d4oxqj.',
     },
     {
       question: 'What payment methods do you accept?',

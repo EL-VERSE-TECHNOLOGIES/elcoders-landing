@@ -36,7 +36,7 @@ export function CTA() {
               Start 7-Day Trial ($49/day)
             </a>
             <a
-              href="https://wa.link/oktez7"
+              href="https://wa.link/d4oxqj"
               target="_blank"
               rel="noopener noreferrer"
               className="px-10 py-4 bg-white/10 backdrop-blur border-2 border-white/30 text-white font-bold text-lg rounded-xl hover:bg-white/20 hover:border-white/50 transition transform hover:scale-105"

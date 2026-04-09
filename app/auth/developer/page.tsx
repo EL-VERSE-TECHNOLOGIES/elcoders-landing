@@ -247,7 +247,7 @@ export default function DeveloperSignup() {
             Our technical team will review your profile and reach out within 48 hours with project opportunities.
           </p>
           <a
-            href="https://wa.link/oktez7"
+            href="https://wa.link/d4oxqj"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold rounded-lg hover:shadow-lg hover:shadow-pink-500/50 transition"

@@ -1,23 +1,37 @@
 # ELCODERS Landing Page - Updates Completed
 
 ## Overview
-Successfully updated the ELCODERS landing page to match the complete brand requirements from the specification document. All redirects, contact methods, and section content have been aligned with the requirements.
+Successfully updated the ELCODERS landing page with latest requirements. WhatsApp redirects updated and email system fixed.
+
+---
+
+## Latest Updates - April 2026
+
+### 1. **WhatsApp Links Updated**
+
+#### Payment Success Redirect
+- **New URL**: `https://wa.link/ufekas`
+- Auto-redirect after 3 seconds
+- Manual "WhatsApp: Get Started" button
+
+#### All Other WhatsApp Connect Links
+- **New URL**: `https://wa.link/d4oxqj`
+- Updated in all components:
+  - Hero section (Start Your Project, WhatsApp Connect)
+  - CTA section (Chat with Team)
+  - Auth pages (after signup success)
+  - Footer, FAQ, Terms, Privacy Policy
+  - Booking component redirect
+
+### 2. **Email System Fixed**
+- Nodemailer OTP emails now working
+- Gmail app password authentication configured
+- Environment variables properly loaded
+- Test email functionality verified
 
 ---
 
 ## Major Changes Made
-
-### 1. **WhatsApp Redirects Implemented**
-
-#### Payment Success Page
-- After payment completes, users are redirected to success page
-- Success page shows two primary action buttons:
-  - **WhatsApp CTA**: `https://wa.link/aps8r5` (green button)
-  - **Email CTA**: `elcoderssofwares12@gmail.com`
-  - Return Home button back to landing page
-- Message updated: "Our team will reach out within 2 hours to start your project"
-
-#### Navigation & Hero Section
 - **Navbar "Get Started" button**: Links to `https://wa.link/oktez7`
 - **Hero "Start Your Project" button**: Links to `https://wa.link/oktez7`
 - **Hero "WhatsApp Connect" button**: Links to `https://wa.link/oktez7`

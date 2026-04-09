@@ -228,7 +228,7 @@ function ClientSignupContent() {
             Our team will reach out within 24 hours to discuss your project and get started.
           </p>
           <a
-            href="https://wa.link/oktez7"
+            href="https://wa.link/d4oxqj"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-bold rounded-lg hover:shadow-lg hover:shadow-cyan-500/50 transition"
