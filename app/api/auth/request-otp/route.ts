@@ -47,7 +47,7 @@ export async function POST(request: NextRequest) {
       message: 'OTP sent successfully',
       data: {
         email: body.email,
-        expiresIn: '10 minutes',
+        expiresIn: '15 minutes',
       },
     });
   } catch (error) {

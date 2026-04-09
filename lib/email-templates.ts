@@ -374,11 +374,11 @@ export const emailTemplates = {
           <div style="font-size: 36px; font-weight: 700; letter-spacing: 8px; color: #0ea5e9; font-family: 'Courier New', monospace; margin: 0;">
             ${otp}
           </div>
-          <p style="margin: 15px 0 0 0; font-size: 12px; color: #666;">Valid for 10 minutes</p>
+          <p style="margin: 15px 0 0 0; font-size: 12px; color: #666;">Valid for 15 minutes</p>
         </div>
         
         <div class="step">
-          <div class="step-title">⏱️ This code expires in 10 minutes</div>
+          <div class="step-title">⏱️ This code expires in 15 minutes</div>
           <p>If you didn't request this code, you can safely ignore this email.</p>
         </div>
         

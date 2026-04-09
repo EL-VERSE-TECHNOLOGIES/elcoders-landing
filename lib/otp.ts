@@ -17,7 +17,7 @@ const otpStorage = new Map<string, StoredOTP>();
 
 // OTP configuration
 const OTP_LENGTH = 6;
-const OTP_VALIDITY_MINUTES = 10;
+const OTP_VALIDITY_MINUTES = 15;
 const MAX_ATTEMPTS = 5;
 
 /**
