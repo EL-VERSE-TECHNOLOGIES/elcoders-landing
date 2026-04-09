@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { sendWelcomeEmail } from '@/lib/mailer';
 
 interface DeveloperSignupRequest {
   firstName: string;
@@ -44,21 +43,13 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Send welcome email to developer
-    await sendWelcomeEmail({
-      name: `${body.firstName} ${body.lastName}`,
-      email: body.email,
-    });
-
     // TODO: Save to database
     // For now, we'll just log it
     console.log('Developer signup:', {
       name: `${body.firstName} ${body.lastName}`,
       email: body.email,
       experience: body.experienceLevel,
-      availability: body.availability,
       techStacks: body.selectedTechStacks,
-      portfolio: body.portfolio,
     });
 
     return NextResponse.json({
@@ -67,7 +58,6 @@ export async function POST(request: NextRequest) {
       data: {
         name: `${body.firstName} ${body.lastName}`,
         email: body.email,
-        techStacks: body.selectedTechStacks,
       },
     });
   } catch (error) {

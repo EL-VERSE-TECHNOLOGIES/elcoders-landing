@@ -32,19 +32,15 @@ const industries = [
 ];
 
 function ClientSignupContent() {
-  const searchParams = useSearchParams();
-  const isVerified = searchParams?.get('verified') || false;
-
-  const [step, setStep] = useState(isVerified ? 1 : 0);
+  const [step, setStep] = useState(0);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
-  const [otpSent, setOtpSent] = useState(false);
 
   const [formData, setFormData] = useState({
-    // Step 0: Email
+    // Step 0: Basic Info
     fullName: '',
-    email: isVerified || '',
+    email: '',
     
     // Step 1: Personal Info
     firstName: '',
@@ -71,48 +67,16 @@ function ClientSignupContent() {
     }));
   };
 
-  const handleRequestOTP = async () => {
-    setError('');
-    
+  const validateStep0 = () => {
     if (!formData.fullName.trim()) {
       setError('Full name is required');
-      return;
+      return false;
     }
-    
     if (!formData.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       setError('Valid email is required');
-      return;
+      return false;
     }
-
-    setLoading(true);
-
-    try {
-      const response = await fetch('/api/auth/request-otp', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email: formData.email,
-          name: formData.fullName,
-        }),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        setError(data.error || 'Failed to send OTP');
-        setLoading(false);
-        return;
-      }
-
-      setOtpSent(true);
-      localStorage.setItem('elcoders_signup_type', 'client');
-      
-      // Redirect to OTP verification
-      window.location.href = `/auth/verify-otp?email=${encodeURIComponent(formData.email)}&name=${encodeURIComponent(formData.fullName)}`;
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'An error occurred');
-      setLoading(false);
-    }
+    return true;
   };
 
   const validateStep1 = () => {
@@ -166,6 +130,7 @@ function ClientSignupContent() {
   const handleNext = () => {
     setError('');
     
+    if (step === 0 && !validateStep0()) return;
     if (step === 1 && !validateStep1()) return;
     if (step === 2 && !validateStep2()) return;
     
@@ -215,26 +180,89 @@ function ClientSignupContent() {
 
   if (success) {
     return (
-      <main className="min-h-screen bg-gradient-to-br from-slate-950 via-blue-950 to-slate-950 pt-24 pb-12 px-4 flex items-center justify-center">
-        <div className="max-w-md w-full text-center">
-          <div className="mb-6 flex justify-center">
-            <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full flex items-center justify-center">
-              <CheckCircle className="w-8 h-8 text-white" />
+      <main className="min-h-screen bg-gradient-to-br from-slate-950 via-blue-950 to-slate-950 pt-24 pb-12 px-4">
+        <div className="max-w-2xl mx-auto">
+          <div className="bg-white rounded-lg shadow-2xl overflow-hidden">
+            {/* Header */}
+            <div className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white p-8 text-center">
+              <div className="mb-4">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==" alt="ELCODERS" className="max-w-48 mx-auto mb-4 opacity-0"/>
+              </div>
+              <h1 className="text-3xl font-bold mb-2">Welcome to ELCODERS</h1>
+              <p className="text-cyan-100 text-lg">You're in. Let's ship code.</p>
+            </div>
+            
+            {/* Content */}
+            <div className="p-8">
+              <p className="text-lg mb-6">Hi <strong>{formData.firstName}</strong>,</p>
+              
+              <p className="text-lg font-medium text-cyan-600 mb-6">You're in. Welcome to ELCODERS.</p>
+              
+              <p className="text-gray-700 mb-6 text-lg">Here's what happens next:</p>
+              
+              {/* Step 1 */}
+              <div className="bg-cyan-50 border-l-4 border-cyan-500 p-6 mb-6 rounded-r-lg">
+                <div className="font-semibold text-cyan-800 text-lg mb-2">📅 STEP 1: Your Kickoff Call</div>
+                <p className="text-gray-700 mb-3">
+                  <a href="https://calendly.com/elcoderssoftwares12/30min" className="text-cyan-600 font-medium underline">https://calendly.com/elcoderssoftwares12/30min</a>
+                </p>
+              </div>
+              
+              {/* Step 2 */}
+              <div className="bg-cyan-50 border-l-4 border-cyan-500 p-6 mb-6 rounded-r-lg">
+                <div className="font-semibold text-cyan-800 text-lg mb-2">⏱️ STEP 2: Before the Call (5 min prep)</div>
+                <ul className="text-gray-700 ml-4">
+                  <li>Have your GitHub/Lab repo URL ready</li>
+                  <li>Know the ONE bug or task you want fixed first</li>
+                  <li>That's it. No SOW. No paperwork.</li>
+                </ul>
+              </div>
+              
+              {/* Step 3 */}
+              <div className="bg-cyan-50 border-l-4 border-cyan-500 p-6 mb-6 rounded-r-lg">
+                <div className="font-semibold text-cyan-800 text-lg mb-2">🎁 STEP 3: Your Discount</div>
+                <p className="text-gray-700 mb-2">Code <strong>ELVERSE40</strong> is active. First 7 days at 40% off.</p>
+                <p className="text-gray-700">Your card will be charged starting tomorrow.</p>
+              </div>
+              
+              {/* Links */}
+              <div className="mt-8 pt-6 border-t border-gray-200">
+                <p className="font-medium mb-3">📞 Need to reschedule?</p>
+                <p className="mb-2">
+                  <a href="https://calendly.com/elcoderssoftwares12/30min" className="text-cyan-600 underline">https://calendly.com/elcoderssoftwares12/30min</a>
+                </p>
+                <p className="mb-6">
+                  <a href="https://elcoders-devs.vercel.app/" className="text-cyan-600 underline">https://elcoders-devs.vercel.app/</a>
+                </p>
+              </div>
+              
+              {/* Signature */}
+              <div className="mt-8 pt-6 border-t border-gray-200">
+                <p className="text-gray-600">Talk soon,</p>
+                <p className="mt-4">
+                  <strong className="text-lg">Cebastian Jerry</strong><br/>
+                  <span className="text-gray-500">Sales, ELCODERS</span><br/>
+                  <span className="text-gray-500">EL VERSE TECHNOLOGIES</span>
+                </p>
+              </div>
+              
+              {/* Social Links */}
+              <div className="mt-8 pt-6 border-t border-gray-200 text-center">
+                <div className="flex justify-center space-x-6">
+                  <a href="https://wa.link/d4oxqj" className="text-cyan-600 hover:text-cyan-800 font-medium">WhatsApp</a>
+                  <a href="https://x.com/ElVerse27" className="text-cyan-600 hover:text-cyan-800 font-medium">Twitter</a>
+                  <a href="https://elcoders-devs.vercel.app/" className="text-cyan-600 hover:text-cyan-800 font-medium">Website</a>
+                </div>
+              </div>
+            </div>
+            
+            {/* Footer */}
+            <div className="bg-gray-50 px-8 py-6 text-center border-t border-gray-200">
+              <p className="text-2xl font-bold text-cyan-600 mb-2">ELCODERS</p>
+              <p className="text-gray-500 text-sm">Daily Velocity. Zero Fluff.</p>
+              <p className="text-gray-400 text-xs mt-4">&copy; 2026 EL VERSE TECHNOLOGIES. All rights reserved.</p>
             </div>
           </div>
-          <h2 className="text-3xl font-bold text-white mb-4">Welcome Aboard! 🎉</h2>
-          <p className="text-blue-200 mb-2">Your signup is successful.</p>
-          <p className="text-blue-300 mb-8">
-            Our team will reach out within 24 hours to discuss your project and get started.
-          </p>
-          <a
-            href="https://wa.link/d4oxqj"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-bold rounded-lg hover:shadow-lg hover:shadow-cyan-500/50 transition"
-          >
-            Chat with Team
-          </a>
         </div>
       </main>
     );
@@ -253,16 +281,16 @@ function ClientSignupContent() {
             Back
           </Link>
           <h1 className="text-4xl font-bold text-white mb-2">Client Registration</h1>
-          <p className="text-slate-400">Step {step} of 4</p>
+          <p className="text-slate-400">Step {step + 1} of 4</p>
         </div>
 
         {/* Progress Bar */}
         <div className="mb-8 flex gap-2">
-          {[0, 1, 2, 3].map((s) => (
+          {[1, 2, 3, 4].map((s) => (
             <div
               key={s}
               className={`h-1 flex-1 rounded-full transition ${
-                s <= step ? 'bg-cyan-500' : 'bg-slate-700'
+                s <= step + 1 ? 'bg-cyan-500' : 'bg-slate-700'
               }`}
             />
           ))}
@@ -276,7 +304,7 @@ function ClientSignupContent() {
             </div>
           )}
 
-          {/* Step 0: Email Verification */}
+          {/* Step 0: Basic Info */}
           {step === 0 && (
             <div className="space-y-5">
               <h2 className="text-2xl font-bold text-white mb-6">Let's get started</h2>
@@ -307,25 +335,13 @@ function ClientSignupContent() {
                   placeholder="john@example.com"
                   className="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500"
                 />
-                <p className="text-xs text-slate-500 mt-2">We'll send a verification code to this email</p>
               </div>
 
               <button
-                onClick={handleRequestOTP}
-                disabled={loading}
-                className="w-full px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-bold rounded-lg hover:shadow-lg hover:shadow-cyan-500/50 transition disabled:opacity-50 flex items-center justify-center gap-2"
+                onClick={handleNext}
+                className="w-full px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-bold rounded-lg hover:shadow-lg hover:shadow-cyan-500/50 transition"
               >
-                {loading ? (
-                  <>
-                    <Loader2 className="w-4 h-4 animate-spin" />
-                    Sending...
-                  </>
-                ) : (
-                  <>
-                    <Mail className="w-4 h-4" />
-                    Send Verification Code
-                  </>
-                )}
+                Next
               </button>
             </div>
           )}

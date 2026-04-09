@@ -226,7 +226,7 @@ export const emailTemplates = {
         <p><strong class="logo" style="font-size: 18px;">ELCODERS</strong></p>
         <p style="color: #999; font-size: 11px; margin-top: 10px;">Daily Velocity. Zero Fluff.</p>
         <div class="social-links">
-          <a href="https://wa.link/oktez7">WhatsApp</a>
+          <a href="https://wa.link/d4oxqj">WhatsApp</a>
           <a href="https://x.com/ElVerse27">Twitter</a>
           <a href="https://elcoders-devs.vercel.app/">Website</a>
         </div>

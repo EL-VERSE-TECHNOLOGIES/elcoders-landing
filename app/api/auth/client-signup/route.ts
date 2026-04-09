@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { sendWelcomeEmail } from '@/lib/mailer';
 
 interface ClientSignupRequest {
   firstName: string;
@@ -44,12 +43,6 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Send welcome email to client
-    await sendWelcomeEmail({
-      name: `${body.firstName} ${body.lastName}`,
-      email: body.email,
-    });
-
     // TODO: Save to database
     // For now, we'll just log it
     console.log('Client signup:', {
@@ -60,9 +53,6 @@ export async function POST(request: NextRequest) {
       budget: body.budget,
       timeline: body.timeline,
     });
-
-    // Send admin notification (optional enhancement)
-    // await sendAdminNotificationEmail({ ... });
 
     return NextResponse.json({
       success: true,

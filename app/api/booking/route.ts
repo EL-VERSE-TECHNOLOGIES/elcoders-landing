@@ -1,9 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server';
-import {
-  sendWelcomeEmail,
-  sendBookingConfirmationEmail,
-  sendAdminNotificationEmail,
-} from '@/lib/mailer';
 
 interface BookingRequest {
   name: string;
@@ -37,62 +32,26 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Send emails in parallel
-    const [welcomeEmailResult, confirmationEmailResult, adminNotificationResult] = await Promise.all([
-      // 1. Send welcome email immediately (0 min after signup)
-      sendWelcomeEmail({
-        name: body.name,
-        email: body.email,
-        amount: body.amount,
-      }),
-      
-      // 2. Send booking confirmation to client
-      sendBookingConfirmationEmail({
-        name: body.name,
-        email: body.email,
-        phone: body.phone,
-        service: body.service,
-        date: body.date,
-        time: body.time,
-        message: body.message,
-      }),
-      
-      // 3. Send admin notification
-      sendAdminNotificationEmail({
-        name: body.name,
-        email: body.email,
-        phone: body.phone,
-        service: body.service,
-        date: body.date,
-        time: body.time,
-        message: body.message,
-      }),
-    ]);
-
-    // Check if all emails were sent successfully
-    const allSuccessful = welcomeEmailResult.success && confirmationEmailResult.success && adminNotificationResult.success;
-
-    if (!allSuccessful) {
-      console.warn('Some emails failed to send:', {
-        welcomeEmail: welcomeEmailResult,
-        confirmationEmail: confirmationEmailResult,
-        adminNotification: adminNotificationResult,
-      });
-    }
+    // TODO: Save to database
+    // For now, we'll just log it
+    console.log('New booking:', {
+      name: body.name,
+      email: body.email,
+      phone: body.phone,
+      service: body.service,
+      date: body.date,
+      time: body.time,
+      message: body.message,
+    });
 
     return NextResponse.json({
       success: true,
-      message: 'Booking created successfully. Welcome email sent.',
+      message: 'Booking created successfully',
       booking: {
         name: body.name,
         email: body.email,
         date: body.date,
         time: body.time,
-      },
-      emailStatus: {
-        welcomeEmail: welcomeEmailResult.success,
-        confirmationEmail: confirmationEmailResult.success,
-        adminNotification: adminNotificationResult.success,
       },
     });
   } catch (error) {

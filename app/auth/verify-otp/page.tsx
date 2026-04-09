@@ -1,135 +1,25 @@
 'use client';
 
-import { useState, useEffect, Suspense } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
-import { Loader2, CheckCircle, Clock } from 'lucide-react';
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
-function VerifyOTPContent() {
+export default function VerifyOTP() {
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const email = searchParams?.get('email') || '';
-  const name = searchParams?.get('name') || '';
-
-  const [otp, setOtp] = useState(['', '', '', '', '', '']);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(900); // 15 minutes
 
   useEffect(() => {
-    if (!email || !name) {
-      router.push('/auth');
-    }
-  }, [email, name, router]);
+    // OTP system has been disabled, redirect to auth
+    router.push('/auth');
+  }, [router]);
 
-  // Countdown timer
-  useEffect(() => {
-    if (timeLeft <= 0) return;
-
-    const timer = setInterval(() => {
-      setTimeLeft(prev => prev - 1);
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, [timeLeft]);
-
-  const handleOtpChange = (index: number, value: string) => {
-    if (!/^\d*$/.test(value)) return;
-    
-    const newOtp = [...otp];
-    newOtp[index] = value.slice(0, 1);
-    setOtp(newOtp);
-
-    // Auto-focus next input
-    if (value && index < 5) {
-      const nextInput = document.getElementById(`otp-${index + 1}`) as HTMLInputElement;
-      nextInput?.focus();
-    }
-  };
-
-  const handleBackspace = (index: number, e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Backspace' && !otp[index] && index > 0) {
-      const prevInput = document.getElementById(`otp-${index - 1}`) as HTMLInputElement;
-      prevInput?.focus();
-    }
-  };
-
-  const handleVerify = async () => {
-    const otpCode = otp.join('');
-
-    if (otpCode.length !== 6) {
-      setError('Please enter all 6 digits');
-      return;
-    }
-
-    setLoading(true);
-    setError('');
-
-    try {
-      const response = await fetch('/api/auth/verify-otp', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email,
-          otp: otpCode,
-        }),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        setError(data.error || 'Failed to verify OTP');
-        setLoading(false);
-        return;
-      }
-
-      setSuccess(true);
-      
-      // Redirect based on user type (stored in session)
-      setTimeout(() => {
-        const userType = localStorage.getItem('elcoders_signup_type');
-        if (userType === 'client') {
-          router.push(`/auth/client?verified=${email}`);
-        } else if (userType === 'developer') {
-          router.push(`/auth/developer?verified=${email}`);
-        }
-      }, 2000);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'An error occurred');
-      setLoading(false);
-    }
-  };
-
-  const handleResendOTP = async () => {
-    setLoading(true);
-    setError('');
-
-    try {
-      const response = await fetch('/api/auth/request-otp', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email,
-          name,
-        }),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        setError(data.error || 'Failed to resend OTP');
-        setLoading(false);
-        return;
-      }
-
-      setOtp(['', '', '', '', '', '']);
-      setTimeLeft(600);
-      setError('');
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'An error occurred');
-      setLoading(false);
-    }
-  };
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-blue-950 to-slate-950 flex items-center justify-center px-4">
+      <div className="text-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-cyan-400 mx-auto mb-4"></div>
+        <p className="text-white text-lg">Redirecting...</p>
+      </div>
+    </div>
+  );
+}
 
   const minutes = Math.floor(timeLeft / 60);
   const seconds = timeLeft % 60;
