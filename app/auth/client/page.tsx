@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { Suspense, useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { ArrowLeft, Loader2, CheckCircle, Mail } from 'lucide-react';
@@ -31,9 +31,9 @@ const industries = [
   'Other',
 ];
 
-export default function ClientSignup() {
+function ClientSignupContent() {
   const searchParams = useSearchParams();
-  const isVerified = searchParams.get('verified');
+  const isVerified = searchParams?.get('verified') || false;
 
   const [step, setStep] = useState(isVerified ? 1 : 0);
   const [loading, setLoading] = useState(false);
@@ -544,5 +544,24 @@ export default function ClientSignup() {
         </div>
       </div>
     </main>
+  );
+}
+
+function ClientSignupFallback() {
+  return (
+    <main className="min-h-screen bg-gradient-to-br from-slate-950 via-blue-950 to-slate-950 flex items-center justify-center">
+      <div className="text-center">
+        <Loader2 className="w-8 h-8 text-cyan-500 animate-spin mx-auto mb-4" />
+        <p className="text-slate-300">Loading...</p>
+      </div>
+    </main>
+  );
+}
+
+export default function ClientSignup() {
+  return (
+    <Suspense fallback={<ClientSignupFallback />}>
+      <ClientSignupContent />
+    </Suspense>
   );
 }

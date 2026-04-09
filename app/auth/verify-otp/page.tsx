@@ -1,14 +1,14 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Loader2, CheckCircle, Clock } from 'lucide-react';
 
-export default function VerifyOTP() {
+function VerifyOTPContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const email = searchParams.get('email');
-  const name = searchParams.get('name');
+  const email = searchParams?.get('email') || '';
+  const name = searchParams?.get('name') || '';
 
   const [otp, setOtp] = useState(['', '', '', '', '', '']);
   const [loading, setLoading] = useState(false);
@@ -228,5 +228,24 @@ export default function VerifyOTP() {
         </div>
       </div>
     </main>
+  );
+}
+
+function VerifyOTPFallback() {
+  return (
+    <main className="min-h-screen bg-gradient-to-br from-slate-950 via-blue-950 to-slate-950 flex items-center justify-center">
+      <div className="text-center">
+        <Loader2 className="w-8 h-8 text-cyan-500 animate-spin mx-auto mb-4" />
+        <p className="text-slate-300">Loading...</p>
+      </div>
+    </main>
+  );
+}
+
+export default function VerifyOTP() {
+  return (
+    <Suspense fallback={<VerifyOTPFallback />}>
+      <VerifyOTPContent />
+    </Suspense>
   );
 }
